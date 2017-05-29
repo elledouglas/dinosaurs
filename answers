@@ -1,0 +1,41 @@
+SELECT COUNT(id) from dinos;
+
+dinosaurs=# SELECT name from dinos
+dinosaurs-# WHERE period = 'Jurassic';
+
+dinosaurs=# SELECT SUM(length)
+dinosaurs-# from dinos
+dinosaurs-# WHERE period = 'Cretaceious';
+
+dinosaurs=# SELECT name, species FROM dinos
+dinosaurs-# WHERE period = 'Jurassic'
+dinosaurs-# ORDER BY species;
+
+# SELECT name, t_order, diet from dinos
+# WHERE t_order = 'Saurischians' AND diet = "Carnivorous";
+
+dinosaurs=# SELECT name, length from dinos
+dinosaurs-# WHERE length in(SELECT MIN(length) FROM dinos);
+
+
+dinosaurs=# UPDATE dinos
+dinosaurs-# SET name = 'Shortie'
+dinosaurs-# WHERE length in(SELECT MIN(length) FROM dinos);
+UPDATE 1
+dinosaurs=# SELECT name, length from dinos
+dinosaurs-# WHERE length in (SELECT MIN(length) FROM dinos);
+
+
+dinosaurs=# SELECT name from dinos
+dinosaurs-# Order by name
+dinosaurs-# limit 1;
+
+dinosaurs=# UPDATE dinos
+dinosaurs-# Set name = 'The Famous Five'
+dinosaurs-# WHERE length in(SELECT length FROM dinos WHERE length > 0 ORDER BY length DESC LIMIT 5);
+UPDATE 5
+dinosaurs=# SELECT name, length FROM dinos
+dinosaurs-# WHERE length > 0
+dinosaurs-# ORDER BY length
+dinosaurs-# DESC
+dinosaurs-# LIMIT 10;
